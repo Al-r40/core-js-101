@@ -203,23 +203,14 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  // let result = '';
-  // const fALBase = '─';
-  // const space = ' ';
-  // const firstStr = `┌${fALBase.repeat(width - 2)}┐\n`;
-  // const secondStr = `│${space.repeat(width - 2)}│\n`;
-  // const lastStr = `└${fALBase.repeat(width - 2)}┘\n`;
-  // if (height === 2) {
-  //   result = `${firstStr}
-  //   ${lastStr}`;
-  // } else {
-  //   result = `${firstStr}
-  //   ${secondStr.repeat(height - 2)}
-  //   ${lastStr}`;
-  // }
-  // return result;
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  const space = ' ';
+  const base = '─';
+  const top = `┌${base.repeat(width - 2)}┐\n`;
+  const center = `│${space.repeat(width - 2)}│\n`;
+  const bottom = `└${base.repeat(width - 2)}┘\n`;
+  const result = `${top}${center.repeat(height - 2)}${bottom}`;
+  return result;
 }
 
 
@@ -256,8 +247,11 @@ function encodeToRot13(/* str */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  if (typeof value === 'string' || value instanceof String) {
+    return true;
+  }
+  return false;
 }
 
 
